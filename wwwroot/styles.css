@@ -1,0 +1,251 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    /*background-color: #f9f9f9;*/
+    background-color: #314a60;
+}
+
+.container {
+    /*max-width: 600px;*/
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 40px;
+}
+
+h1, h3 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    /*font-size: 16px;*/
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #f1f1f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.logo {
+    display: block; 
+    margin: 0 auto; 
+    max-width: 100%;
+    height: auto;   
+    width: 80px;   
+}
+
+.inline-container {
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+    justify-content: center; 
+    width: auto;
+    margin: 0 auto;
+}
+
+.inline-container h4 {
+    flex-grow: 1; 
+    text-align: right; 
+}
+
+.inline-container label {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.cardContainer {
+    display: flex;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    gap: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.card {
+    /*--background: linear-gradient(to right, #74ebd5 0%, #acb6e5 100%);*/
+    --background: linear-gradient(to right, #657e87 0%, #acb6e5 100%);
+    width: 190px;
+    /*height: 254px;*/
+    padding: 5px;
+    border-radius: 1rem;
+    overflow: visible;
+    background: #74ebd5;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+    /*margin-bottom: 10px;*/
+    /*margin: 20px;*/
+
+    flex: 1 1 calc(16.66% - 20px); /* Each card takes 1/6th of the row minus the gap */
+    max-width: calc(16.66% - 20px); /* Prevent cards from growing too large */
+    box-sizing: border-box;
+}
+
+.card-header {
+    text-align: center;
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    padding: 2px;
+    border-radius: 2px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-body {
+    /*margin-top: 10px;*/
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    /*box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);*/
+    padding-top: 1px;
+}
+
+.row1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    /*margin-bottom: 30px;*/
+}
+
+.row2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    /*margin-top: 30px;
+    margin-bottom: 20px;*/
+}
+
+.left-info,
+.right-info {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+    
+    word-wrap: break-word;
+    white-space: normal;
+    color: black;
+}
+
+/*.left-info {*/
+    /*color: #007acc;*/
+    /*color: red;
+}
+
+.right-info {*/
+    /*color: #d9534f;*/
+    /*color: black;
+}*/
+
+/*.divider {
+    border-top: 1px solid #ddd;
+    margin: 5px 0;
+}*/
+
+.divider {
+    width: 80%; /* Adjust width as needed */
+    height: 2px;
+    background: #ddd;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 1px;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.1);  Scale up the card slightly on hover 
+}
+
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    z-index: -1;
+    opacity: 0;
+    /*transition: opacity 1s;*/
+    transition: opacity 0.2s ease-in-out;
+}
+
+.card::before {
+    /*background: linear-gradient(to bottom right, #f6d365 0%, #fda085 100%);*/
+    background: linear-gradient(to bottom right, #353ae4 0%, #effdff 100%);
+    transform: rotate(2deg);
+}
+
+.card::after {
+    /*background: linear-gradient(to top right, #84fab0 0%, #8fd3f4 100%);*/
+    background: linear-gradient(to bottom right, #808080 0%, #a1a1a1 100%);
+    transform: rotate(-2deg);
+}
+
+.card-info {
+    --color: #fff;
+    background: var(--color);
+    /*color: var(--color);*/
+    color: black;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: 0.7rem;
+    position: relative;
+    z-index: 2;
+}
+
+.card .title {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.card:hover::before,
+.card:hover::after {
+    opacity: 1;
+    transition: opacity 1s;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.card:hover .card-info {
+    color: #fff;
+    color: black;
+    transition: color 1s;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.card.active {
+    transform: scale(1.5); /* Grow the card */
+    background: linear-gradient(to bottom right, #f6d365, #fda085); /* Change color */
+    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+    margin: 16px;
+}
+
+.card.active::before,
+.card.active::after {
+    opacity: 1; /* Make pseudo-elements visible */
+    transition: opacity 0.2s ease-in-out;
+}
+
+.cardContainer .card:not(.active) {
+    transform: scale(0.8); /* Shrink non-active cards */
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    /*opacity: 0.6;*/ /* Optional: dim the non-active cards */
+}

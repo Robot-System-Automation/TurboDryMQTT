@@ -1,0 +1,219 @@
+﻿<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Web App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0/signalr.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>MQTT Message Viewer</h1>-->
+<!--<div>
+    <h3>Messages:</h3>
+    <ul id="messagesList"></ul>
+</div>-->
+<!--<div>-->
+<!-- Line status display -->
+<!--<h3>Line Status:</h3>
+    <label id="lineStatusLabel">Waiting for message...</label>
+</div>
+
+<div>-->
+<!-- M1 counter display -->
+<!--<h3>M1 Counter:</h3>
+            <label id="m1CounterLabel">Waiting for message...</label>
+        </div>
+
+        <div>
+            <h3>Messages:</h3>
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+
+    <script>
+        "use strict";
+
+        // Connect to the SignalR hub
+        var connection = new signalR.HubConnectionBuilder()
+            //.withUrl("https://localhost:7139/mqttHub")
+            .withUrl(`${window.location.origin}/mqttHub`)
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        // Listen for messages from the backend
+        connection.on("ReceiveMessage", function (topic, message) {
+            var li = document.createElement("li");
+            li.textContent = `Topic: ${topic}, Message: ${message}`;
+            //li.textContent = `Message: ${message}`;
+            document.getElementById("messagesList").appendChild(li);
+
+
+            if (topic === "rsa/mainpage/line_status") {
+                // Update the Line Status label with the message
+                document.getElementById("lineStatusLabel").textContent = message;
+            }
+            if (topic === "rsa/mainpage/m1_counter") {
+                // Update the M1 Counter label with the message
+                document.getElementById("m1CounterLabel").textContent = message;
+            }
+
+        });
+
+        // Start the SignalR connection
+        connection.start().then(function () {
+            console.log("Connected to SignalR hub!");
+        }).catch(function (err) {
+            console.error("Error connecting to SignalR:", err.toString());
+        });
+    </script>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0/signalr.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!--<h1>MQTT Message Viewer</h1>-->
+        <img src="/Images/logo.jpg" alt="rsa logo" class="logo">
+        <div class="inline-container">
+            <h4>Operator station number:</h4>
+            <label id="stationNrLabel">Waiting for message...</label>
+        </div>
+
+        <!--<div>
+        <h3>Messages:</h3>
+        <ul id="messagesList"></ul>
+    </div>-->
+        <div class="cardContainer">
+            <div class="card" data-station-id="1">
+                <div class="card-info">
+                    <div class="card-header">
+                        <label>Station 1</label>
+                    </div>
+                    <!--<p class="title">Magic Card</p>-->
+                    <div class="card-body">
+                        <div class="row1">
+                            <div class="left-info"><label id="st1lvl1lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st1lvl1rg">Waiting...</label></div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row2">
+                            <div class="left-info"><label id="st1lvl2lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st1lvl2rg">Waiting...</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-station-id="2">
+                <div class="card-info">
+                    <div class="card-header">
+                        <label>Station 2</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row1">
+                            <div class="left-info"><label id="st2lvl1lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st2lvl1rg">Waiting...</label></div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row2">
+                            <div class="left-info"><label id="st2lvl2lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st2lvl2rg">Waiting...</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-station-id="3">
+                <div class="card-info">
+                    <div class="card-header">
+                        <label>Station 3</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row1">
+                            <div class="left-info"><label id="st3lvl1lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st3lvl1rg">Waiting...</label></div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row2">
+                            <div class="left-info"><label id="st3lvl2lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st3lvl2rg">Waiting...</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-station-id="4">
+                <div class="card-info">
+                    <div class="card-header">
+                        <label>Station 4</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row1">
+                            <div class="left-info"><label id="st4lvl1lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st4lvl1rg">Waiting...</label></div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row2">
+                            <div class="left-info"><label id="st4lvl2lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st4lvl2rg">Waiting...</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-station-id="5">
+                <div class="card-info">
+                    <div class="card-header">
+                        <label>Station 5</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row1">
+                            <div class="left-info"><label id="st5lvl1lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st5lvl1rg">Waiting...</label></div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row2">
+                            <div class="left-info"><label id="st5lvl2lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st5lvl2rg">Waiting...</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-station-id="6">
+                <div class="card-info">
+                    <div class="card-header">
+                        <label>Station 6</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row1">
+                            <div class="left-info"><label id="st6lvl1lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st6lvl1rg">Waiting...</label></div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row2">
+                            <div class="left-info"><label id="st6lvl2lf">Waiting...</label></div>
+                            <div class="right-info"><label id="st6lvl2rg">Waiting...</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inline-container">
+            <h4>Sole presence - left side:</h4>
+            <label id="solePresenceLf">Waiting for message...</label>
+            <h4>Sole presence - right side:</h4>
+            <label id="solePresenceLf">Waiting for message...</label>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
