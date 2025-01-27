@@ -8,7 +8,7 @@
 
 .container {
     /*max-width: 600px;*/
-    max-width: 1000px;
+    max-width: 1400px;
     margin: auto;
     padding: 20px;
     background: #fff;
@@ -54,11 +54,27 @@ ul li {
     justify-content: center; 
     width: auto;
     margin: 0 auto;
+    padding: 20px;
+    margin: 20px;
+    font-size: 25px;
+}
+
+.inline-container-invisible {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    width: auto;
+    margin: 0 auto;
+    padding: 20px;
+    margin: 20px;
+    font-size: 25px;
+    opacity: 0;
 }
 
 .inline-container h4 {
-    flex-grow: 1; 
-    text-align: right; 
+    flex-grow: 1;
+    text-align: right;
 }
 
 .inline-container label {
@@ -159,8 +175,8 @@ ul li {
     height: 2px;
     background: #ddd;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 1px;
     position: relative;
 }
@@ -235,7 +251,7 @@ ul li {
     transform: scale(1.5); /* Grow the card */
     background: linear-gradient(to bottom right, #f6d365, #fda085); /* Change color */
     transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
-    margin: 16px;
+    margin: 32px;
 }
 
 .card.active::before,
