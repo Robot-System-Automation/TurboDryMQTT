@@ -28,6 +28,18 @@ const topicElementMap = {
     "rsa/738/TD/st6_lev1_rg": "st6lvl1rg",
     "rsa/738/TD/sole_presence_lf": "solePresenceLf",
     "rsa/738/TD/sole_presence_rg": "solePresenceRg",
+    "rsa/738/TD/list_pos1": "listPos1",
+    "rsa/738/TD/list_pos2": "listPos2",
+    "rsa/738/TD/list_pos3": "listPos3",
+    "rsa/738/TD/list_pos4": "listPos4",
+    "rsa/738/TD/list_pos5": "listPos5",
+    "rsa/738/TD/list_pos6": "listPos6",
+    "rsa/738/TD/list_pos7": "listPos7",
+    "rsa/738/TD/list_pos8": "listPos8",
+    "rsa/738/TD/list_pos9": "listPos9",
+    "rsa/738/TD/list_pos10": "listPos10",
+    "rsa/738/TD/list_pos11": "listPos11",
+    "rsa/738/TD/list_pos12": "listPos12",
 };
 
 // Connect to the SignalR hub
@@ -38,9 +50,6 @@ var connection = new signalR.HubConnectionBuilder()
 
 // Listen for messages from the backend
 connection.on("ReceiveMessage", function (topic, message) {
-    //var li = document.createElement("li");
-    //li.textContent = `Topic: ${topic}, Message: ${message}`;
-    //document.getElementById("messagesList").appendChild(li);
 
     if (document.getElementById("messagesList")) {
         var li = document.createElement("li");
@@ -52,19 +61,14 @@ connection.on("ReceiveMessage", function (topic, message) {
         document.getElementById("stationNrLabel").textContent = message;
 
         const cards = document.querySelectorAll('.card');
-        //if (message === "4") {
-        //    card.classList.add('active');
-        //} else {
-        //    card.classList.remove('active');
-        //}
 
         cards.forEach(card => {
             const stationId = card.getAttribute('data-station-id');
             console.log(stationId);
             if (message === stationId) {
-                card.classList.add('active'); // Add active class if station matches
+                card.classList.add('active');
             } else {
-                card.classList.remove('active'); // Remove active class if station does not match
+                card.classList.remove('active'); 
             }
         });
     }
@@ -72,6 +76,9 @@ connection.on("ReceiveMessage", function (topic, message) {
     if (topicElementMap[topic]) {
         // Update the corresponding element's text content
         document.getElementById(topicElementMap[topic]).textContent = message;
+    }
+    else {
+        console.warn(`Element not found for topic: ${topic}`);
     }
 });
 

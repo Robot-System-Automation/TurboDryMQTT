@@ -37,10 +37,18 @@ ul {
 }
 
 ul li {
-    background: #f1f1f1;
-    margin: 5px 0;
+    /* background: #f1f1f1;*/
+    /*margin: 5px 0;
     padding: 10px;
+    border-radius: 4px;*/
+
+
+    /* background: #f1f1f1; */
+    margin: 3px 0;
+    padding: 3px;
     border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .logo {
@@ -58,8 +66,7 @@ ul li {
     justify-content: center; 
     width: auto;
     margin: 0 auto;
-    /*padding: 20px;*/
-    margin: 20px;
+    /*margin: 20px;*/
     font-size: 25px;
 }
 
@@ -70,8 +77,7 @@ ul li {
     justify-content: center;
     width: auto;
     margin: 0 auto;
-    /*padding: 20px;*/
-    margin: 20px;
+    /*margin: 20px;*/
     font-size: 25px;
     opacity: 0;
 }
@@ -88,11 +94,11 @@ ul li {
 
 .cardContainer {
     display: flex;
-    /*flex-wrap: wrap;*/
     justify-content: center;
     gap: 20px;
     padding-top: 40px;
-    padding-bottom: 40px;
+    /*padding-bottom: 40px;*/
+    align-items: flex-start;
 }
 
 .card {
@@ -185,9 +191,9 @@ ul li {
     position: relative;
 }
 
-.card:hover {
-    transform: scale(1.1);  Scale up the card slightly on hover 
-}
+/*.card:hover {
+    transform: scale(1.1);
+}*/
 
 .card::before,
 .card::after {
@@ -255,7 +261,8 @@ ul li {
     transform: scale(1.5); /* Grow the card */
     background: linear-gradient(to bottom right, #f6d365, #fda085); /* Change color */
     transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
-    margin: 32px;
+    /*margin: 32px;*/
+    margin: 60px;
 }
 
 .card.active::before,
@@ -269,3 +276,89 @@ ul li {
     transition: transform 0.2s ease-in-out; /* Smooth transition */
     /*opacity: 0.6;*/ /* Optional: dim the non-active cards */
 }
+
+
+.listContainer {
+    text-align: center;
+    margin-top: -80px;
+}
+
+.arrow {
+    font-size: 24px;
+    /*margin: 10px 0;*/
+}
+
+.top-arrow {
+    transform: rotate(180deg);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    width: 150px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    text-align: center;*/
+    /*cursor: pointer;*/
+    /*transition: background-color 0.3s;*/
+
+    /*border: 2px solid;*/
+    /*border-image: linear-gradient(to right, #657e87 0%, #acb6e5 100%);
+    border-image-slice: 1;*/
+    /*border-radius: 10px;*/
+
+    /*border: 2px solid; 
+    border-radius: 10px;
+    border-image: linear-gradient(to right, #657e87 0%, #acb6e5 100%);
+    border-image-slice: 1;*/
+
+    /*border: 2px solid transparent;*/ /* Transparent border */
+    /*background-image: linear-gradient(white, white), linear-gradient(to right, #657e87, #acb6e5);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}*/
+
+li {
+    position: relative;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+    background: #fff; /* Background color */
+    border-radius: 10px; /* Rounded corners */
+    z-index: 1; /* Ensures text stays above */
+}
+
+li::before {
+    content: "";
+    position: absolute;
+    inset: 0; 
+    border-radius: 4px;
+    padding: 2px;
+    background: linear-gradient(to right, #657e87, #acb6e5); 
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+/*/*li:hover {
+    background-color: #f9f9f9;
+}*/
+    /*li:last-child {
+    border-bottom: none;
+}*/

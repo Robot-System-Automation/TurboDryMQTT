@@ -61,9 +61,6 @@ namespace TurboDryMQTT.Services
         {
             try
             {
-                await _mqttClient.SubscribeAsync("rsa/mainpage/line_status");
-                await _mqttClient.SubscribeAsync("rsa/mainpage/m1_counter");
-
                 await _mqttClient.SubscribeAsync("rsa/738/TD/op_station_number");
                 await _mqttClient.SubscribeAsync("rsa/738/TD/st1_lev2_lf");
                 await _mqttClient.SubscribeAsync("rsa/738/TD/st1_lev2_rg");
@@ -91,6 +88,18 @@ namespace TurboDryMQTT.Services
                 await _mqttClient.SubscribeAsync("rsa/738/TD/st6_lev1_rg");
                 await _mqttClient.SubscribeAsync("rsa/738/TD/sole_presence_lf");
                 await _mqttClient.SubscribeAsync("rsa/738/TD/sole_presence_rg");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos1");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos2");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos3");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos4");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos5");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos6");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos7");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos8");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos9");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos10");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos11");
+                await _mqttClient.SubscribeAsync("rsa/738/TD/list_pos12");
 
                 System.Diagnostics.Debug.WriteLine("Subscribed to topics.");
             }
