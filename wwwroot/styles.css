@@ -164,22 +164,6 @@ ul li {
     white-space: normal;
     color: black;
 }
-
-/*.left-info {*/
-    /*color: #007acc;*/
-    /*color: red;
-}
-
-.right-info {*/
-    /*color: #d9534f;*/
-    /*color: black;
-}*/
-
-/*.divider {
-    border-top: 1px solid #ddd;
-    margin: 5px 0;
-}*/
-
 .divider {
     width: 80%; /* Adjust width as needed */
     height: 2px;
@@ -280,16 +264,26 @@ ul li {
 
 .listContainer {
     text-align: center;
-    margin-top: -80px;
+    margin-top: -90px;
 }
 
 .arrow {
-    font-size: 24px;
+    font-size: 40px;
     /*margin: 10px 0;*/
+    font-weight: bold;
 }
 
 .top-arrow {
     transform: rotate(180deg);
+    /*color: darkslategrey;*/
+    color: green;
+}
+
+.bottom-arrow {
+    transform: rotate(180deg);
+    /*color: darkred;*/
+    color:red;
+    padding-bottom: 5px;
 }
 
 ul {
@@ -308,39 +302,15 @@ ul {
     padding-bottom: 5px;
 }
 
-/*li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    text-align: center;*/
-    /*cursor: pointer;*/
-    /*transition: background-color 0.3s;*/
-
-    /*border: 2px solid;*/
-    /*border-image: linear-gradient(to right, #657e87 0%, #acb6e5 100%);
-    border-image-slice: 1;*/
-    /*border-radius: 10px;*/
-
-    /*border: 2px solid; 
-    border-radius: 10px;
-    border-image: linear-gradient(to right, #657e87 0%, #acb6e5 100%);
-    border-image-slice: 1;*/
-
-    /*border: 2px solid transparent;*/ /* Transparent border */
-    /*background-image: linear-gradient(white, white), linear-gradient(to right, #657e87, #acb6e5);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-}*/
-
 li {
     position: relative;
     padding: 10px;
     width: 100%;
     text-align: center;
     transition: background-color 0.3s;
-    background: #fff; /* Background color */
-    border-radius: 10px; /* Rounded corners */
-    z-index: 1; /* Ensures text stays above */
+    background: #fff; 
+    border-radius: 10px;
+    z-index: 1;
 }
 
 li::before {
@@ -355,10 +325,3 @@ li::before {
     mask-composite: exclude;
     z-index: -1;
 }
-
-/*/*li:hover {
-    background-color: #f9f9f9;
-}*/
-    /*li:last-child {
-    border-bottom: none;
-}*/
