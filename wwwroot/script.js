@@ -64,11 +64,16 @@ connection.on("ReceiveMessage", function (topic, message) {
 
         cards.forEach(card => {
             const stationId = card.getAttribute('data-station-id');
+            const statusMessage = card.querySelector('.status-message'); // Select the message element inside the card
+            
             console.log(stationId);
             if (message === stationId) {
                 card.classList.add('active');
+                statusMessage.style.display = 'block'; // Make it visible
             } else {
                 card.classList.remove('active'); 
+                statusMessage.style.display = 'none'; // Hide it
+
             }
         });
     }
@@ -85,6 +90,7 @@ connection.on("ReceiveMessage", function (topic, message) {
 // Start the SignalR connection
 connection.start().then(function () {
     console.log("Connected to SignalR hub!");
+    console.log("just test");
 }).catch(function (err) {
     console.error("Error connecting to SignalR:", err.toString());
 });
