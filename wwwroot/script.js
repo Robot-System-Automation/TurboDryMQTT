@@ -64,7 +64,7 @@ connection.on("ReceiveMessage", function (topic, message) {
 
         cards.forEach(card => {
             const stationId = card.getAttribute('data-station-id');
-            const statusMessage = card.querySelector('.status-message'); // Select the message element inside the card
+            const statusMessage = card.querySelector('.status-message'); 
             
             console.log(stationId);
             if (message === stationId) {
