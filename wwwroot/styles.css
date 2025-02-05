@@ -45,7 +45,7 @@ ul li {
     display: block; 
     max-width: 100%;
     height: auto;   
-    padding:30px;
+    padding: 10px;
     margin-left: auto;
     width: 150px;
 }
@@ -303,4 +303,84 @@ li::before {
 
 .active .status-message {
     display: block !important;
+}
+
+#mqttStatus {
+    font-weight: bold;
+    /*color: red;*/
+}
+
+.mqtt-alert {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.mqtt-alert .mqtt-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.mqtt-alert .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+/* Style for disconnected state */
+.mqtt-alert.disconnected {
+    background-color: #f8d7da;
+    color: #721c24;
+    height: 20px;
+    width: 300px;
+    font-size: 12px;
+}
+
+.mqtt-alert.disconnected .mqtt-icon {
+    content: url('https://img.icons8.com/ios-filled/50/ff0000/cancel.png');
+    width: 20px;
+}
+
+/* Style for connected state */
+.mqtt-alert.connected {
+    background-color: #d4edda;
+    color: #155724;
+    height: 20px;
+    width: 300px;
+    font-size: 12px;
+}
+
+.mqtt-alert.connected .mqtt-icon {
+    content: url('https://img.icons8.com/ios-filled/50/00ff00/checkmark.png');
+    width: 20px;
+}
+
+.img-header {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.mqttStatusConnected {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.mqttStatusDisconnected {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }

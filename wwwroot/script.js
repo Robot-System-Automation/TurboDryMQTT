@@ -1,6 +1,7 @@
 ﻿"use strict";
 
 const topicElementMap = {
+    "rsa/738/TD/status": "mqttStatus",
     "rsa/738/TD/op_station_number": "stationNrLabel",
     "rsa/738/TD/st1_lev2_lf": "st1lvl2lf",
     "rsa/738/TD/st1_lev2_rg": "st1lvl2rg",
@@ -42,6 +43,9 @@ const topicElementMap = {
     "rsa/738/TD/list_pos12": "listPos12",
 };
 
+let brokerConnected = false;
+let brokerDisconnected = false;
+
 // Connect to the SignalR hub
 var connection = new signalR.HubConnectionBuilder()
     .withUrl(`${window.location.origin}/mqttHub`)
@@ -55,6 +59,17 @@ connection.on("ReceiveMessage", function (topic, message) {
         var li = document.createElement("li");
         li.textContent = `Topic: ${topic}, Message: ${message}`;
         document.getElementById("messagesList").appendChild(li);
+    }
+
+    if (topic === "rsa/738/TD/status") {
+        if (message === "1") {
+            brokerConnected = message === "1";
+            setMQTTStatus(brokerConnected);
+        }
+        else {
+            brokerDisconnected = message !== "1";
+            setMQTTDisconnectedStatus(brokerDisconnected);
+        } 
     }
 
     if (topic === "rsa/738/TD/op_station_number") {
@@ -87,10 +102,51 @@ connection.on("ReceiveMessage", function (topic, message) {
     }
 });
 
+connection.on("BrokerStatus", function (status) {
+    document.getElementById("statusMessage").innerText = `MQTT Broker: ${status}`;
+});
+
 // Start the SignalR connection
 connection.start().then(function () {
     console.log("Connected to SignalR hub!");
-    console.log("just test");
 }).catch(function (err) {
     console.error("Error connecting to SignalR:", err.toString());
 });
+
+// Auto-reconnect if connection is lost
+connection.onclose(() => {
+    setTimeout(() => connection.start(), 5000);
+});
+
+function setMQTTStatus(isConnected) {
+    const connectedAlert = document.getElementById('mqttAlertConnected');
+    const disconnectedAlert = document.getElementById('mqttAlertDisconnected');
+
+    if (isConnected) {
+        connectedAlert.style.display = 'block';
+        disconnectedAlert.style.display = 'none';
+
+        setTimeout(() => {
+            connectedAlert.style.display = 'none';
+        }, 5000);
+    }
+}
+
+function setMQTTDisconnectedStatus(isDisconnected) {
+    const connectedAlert = document.getElementById('mqttAlertConnected');
+    const disconnectedAlert = document.getElementById('mqttAlertDisconnected');
+
+    if (isDisconnected) {
+        disconnectedAlert.style.display = 'block';
+        connectedAlert.style.display = 'none';
+
+        setTimeout(() => {
+            disconnectedAlert.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// Function to close the alert
+function closeAlert() {
+    document.getElementById('mqttAlert').style.display = 'none';
+}

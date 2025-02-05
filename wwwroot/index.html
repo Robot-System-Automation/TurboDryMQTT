@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turbo Dry MQTT</title>
-    <link rel="stylesheet" href="styles.css?v.1.0.3">
+    <link rel="stylesheet" href="styles.css?v.1.0.7">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0/signalr.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <img src="/Images/logo.rsa.png" alt="rsa logo" class="logo">
+        <!--<p id="mqttStatus">MQTT Broker: Disconnected</p>-->
+        <!--<p id="statusMessage">MQTT Broker: Unknown</p>-->
+        <div class="img-header">
+            <div id="mqttAlertConnected" class="mqtt-alert connected" style="display:none;">
+                <span id="mqttIcon" class="mqtt-icon"></span>
+                <span id="mqttStatusConnected">MQTT Broker: Connected</span>
+                <button class="close-btn" onclick="closeAlert()">×</button>
+            </div>
+            <div id="mqttAlertDisconnected" class="mqtt-alert disconnected">
+                <span id="mqttIcon" class="mqtt-icon"></span>
+                <span id="mqttStatusDisconnected">MQTT Broker: Disconnected</span>
+                <button class="close-btn" onclick="closeAlert()">×</button>
+            </div>
+            <img src="/Images/logo.rsa.png" alt="rsa logo" class="logo">
+        </div>
         <div class="inline-container">
             <h4>Operator station number:</h4>
             <label id="stationNrLabel">Waiting for message...</label>
@@ -61,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-            <p class="status-message">Operation Station</p>
+                <p class="status-message">Operation Station</p>
             </div>
             <div class="card" data-station-id="2">
                 <div class="card-info">
@@ -80,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-            <p class="status-message">Operation Station</p>
+                <p class="status-message">Operation Station</p>
             </div>
             <div class="card" data-station-id="3">
                 <div class="card-info">
@@ -99,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-            <p class="status-message">Operation Station</p>
+                <p class="status-message">Operation Station</p>
             </div>
             <div class="card" data-station-id="4">
                 <div class="card-info">
@@ -118,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-            <p class="status-message">Operation Station</p>
+                <p class="status-message">Operation Station</p>
             </div>
             <div class="card" data-station-id="5">
                 <div class="card-info">
@@ -137,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-            <p class="status-message">Operation Station</p>
+                <p class="status-message">Operation Station</p>
             </div>
             <div class="card" data-station-id="6">
                 <div class="card-info">
@@ -156,7 +170,7 @@
                         </div>
                     </div>
                 </div>
-            <p class="status-message">Operation Station</p>
+                <p class="status-message">Operation Station</p>
             </div>
         </div>
 
