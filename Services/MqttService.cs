@@ -26,8 +26,8 @@ namespace TurboDryMQTT.Services
 
             var options = new MqttClientOptionsBuilder()
                 .WithClientId("MqttWebAppClient")
-                .WithTcpServer("test.mosquitto.org", 1883)
-                //.WithTcpServer("172.31.10.136", 1883)
+                //.WithTcpServer("test.mosquitto.org", 1883)
+                .WithTcpServer("172.31.10.136", 1883)
                 .WithCleanSession()
                 .Build();
 

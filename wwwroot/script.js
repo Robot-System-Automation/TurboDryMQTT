@@ -48,7 +48,8 @@ let brokerDisconnected = false;
 
 // Connect to the SignalR hub
 var connection = new signalR.HubConnectionBuilder()
-    .withUrl(`${window.location.origin}/mqttHub`)
+    //.withUrl(`${window.location.origin}/mqttHub`)
+    .withUrl("http://172.31.10.136:5159/mqttHub")
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
